@@ -17,8 +17,6 @@ public class Lab8 {
 
 		System.out.println("Welcome to our Java Class.");
 
-		boolean valid = true;
-
 		int choice1 = 1;
 
 		String answer = "yes";
