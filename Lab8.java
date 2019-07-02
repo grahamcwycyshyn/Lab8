@@ -17,8 +17,6 @@ public class Lab8 {
 
         System.out.println("Welcome to our Java Class.");
 
-        boolean valid = true;
-
         int choice1 = 1;
 
         String answer = "yes";
@@ -88,6 +86,8 @@ public class Lab8 {
             answer = input.nextLine();
 
         } while (answer.equalsIgnoreCase("yes"));
+        
+        System.out.println("Thanks!");
 
         input.close();
     }
