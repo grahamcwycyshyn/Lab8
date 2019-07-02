@@ -1,74 +1,95 @@
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Lab8 {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-		String[] name = { "Graham", "Donna", "Tim", "Sam", "Beth", "Mary", "Sandya", "Gary", "Nick", "Tonya" };
+        String[] name = { "Graham", "Donna", "Tim", "Sam", "Beth", "Mary", "Sandya", "Gary", "Nick", "Tonya" };
 
-		String[] hometown = { "Ferndale", "Royal Oak", "Rochester Hills", "Detroit", "Troy", "Clawson", "Dearborn",
-				"Sterling Heights", "Auburn Hills", "Clinton Township" };
+        String[] hometown = { "Ferndale", "Royal Oak", "Rochester Hills", "Detroit", "Troy", "Clawson", "Dearborn",
+                "Sterling Heights", "Auburn Hills", "Clinton Township" };
 
-		String[] food = { "Pizza", "Burgers", "Ice Cream", "Cookies", "Fried Rice", "Pretzels", "Pasta", "Seafood",
-				"Noodles", "Soup" };
+        String[] food = { "Pizza", "Burgers", "Ice Cream", "Cookies", "Fried Rice", "Pretzels", "Pasta", "Seafood",
+                "Noodles", "Soup" };
 
-		System.out.println("Welcome to our Java Class.");
+        System.out.println("Welcome to our Java Class.");
 
-		int choice1 = 1;
+        boolean valid = true;
 
-		String answer = "yes";
+        int choice1 = 1;
 
-		do {
+        String answer = "yes";
+        
+        String answer1 = "yes";
 
-			try {
+        do {
 
-				System.out.println("Which student would you like to learn more about? (enter a number from 1-10)");
+            try {
 
-				choice1 = input.nextInt();
+                System.out.println("Which student would you like to learn more about? (enter a number from 1-10)");
 
-				System.out.println(
-						"Student " + choice1 + " is " + name[(choice1 - 1)] + ". What would you like to know about "
-								+ name[(choice1 - 1)] + "? (enter 'hometown' or 'favorite food'):");
+                choice1 = input.nextInt();
 
-			} catch (ArrayIndexOutOfBoundsException | InputMismatchException ex) {
+                System.out.println(
+                        "Student " + choice1 + " is " + name[(choice1 - 1)] + ". What would you like to know about "
+                                + name[(choice1 - 1)] + "? (enter 'hometown' or 'favorite food'):");
 
-				System.out.println("That data does not exist.  Please try again.");
-				
-				input.nextLine();
-				
-				continue;
+            } catch (ArrayIndexOutOfBoundsException | InputMismatchException ex) {
 
-			}
+                System.out.println("That data does not exist.  Please try again.");
 
-			input.nextLine();
-			
-			String choice2 = input.nextLine();
+                input.nextLine();
 
-			if (choice2.equalsIgnoreCase("hometown")) {
+                continue;
 
-				System.out.println(name[(choice1 - 1)] + " is from " + hometown[(choice1 - 1)]
-						+ ", MI.  Would you like to know more? (enter 'yes' or 'no'):");
+            }
 
-			} else if (choice2.equalsIgnoreCase("favorite food")) {
+            input.nextLine();
+            String choice2 = input.nextLine();
 
-				System.out.println(name[(choice1 - 1)] + " likes to eat " + food[(choice1 - 1)]
-						+ ".  Would you like to know more? (enter 'yes' or 'no'):");
+            if (choice2.equalsIgnoreCase("hometown")) {
 
-			} else {
+                System.out.println(name[(choice1 - 1)] + " is from " + hometown[(choice1 - 1)]
+                        + ", MI.  Would you like to know more " + name[(choice1 - 1)] + "? (enter 'yes' or 'no'):");
+                answer1 = input.nextLine();
+                if (answer1.equalsIgnoreCase("yes")) {
 
-				System.out.println(
-						"That data does not exist.  Please try again.");
-				continue;
-			}
+                    System.out.println(name[(choice1 - 1)] + " likes to eat " + food[(choice1 - 1)]
+                            + ".  Would you like to know more about other students? (enter 'yes' or 'no'):");
+                } else {
+                    continue;
+                }
 
-			answer = input.nextLine();
+            } else if (choice2.equalsIgnoreCase("favorite food")) {
 
-		} while (answer.equalsIgnoreCase("yes"));
-		
-		input.close();
+                System.out.println(name[(choice1 - 1)] + " likes to eat " + food[(choice1 - 1)]
+                        + ".  Would you like to know more " + name[(choice1 - 1)] + "? (enter 'yes' or 'no'):");
 
-	}
+                answer1 = input.nextLine();
+
+                if (answer1.equalsIgnoreCase("yes")) {
+
+                    System.out.println(name[(choice1 - 1)] + " is from " + hometown[(choice1 - 1)]
+                            + ", MI.  Would you like to know more about other students? (enter 'yes' or 'no'):");
+                } else {
+                    continue;
+                }
+
+            } else {
+
+                System.out.println("That data does not exist.  Please try again:");
+                continue;
+
+            }
+
+            answer = input.nextLine();
+
+        } while (answer.equalsIgnoreCase("yes"));
+
+        input.close();
+    }
+
 }
